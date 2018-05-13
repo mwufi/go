@@ -91,10 +91,10 @@ func (curve *CurveParams) affineFromJacobian(x, y, z *big.Int) (xOut, yOut *big.
 	zinv := new(big.Int).ModInverse(z, curve.P)
 	zinvsq := new(big.Int).Mul(zinv, zinv)
 
-	xOut = new(big.Int).Mul(x, zinvsq)
+	xOut := new(big.Int).Mul(x, zinvsq)
 	xOut.Mod(xOut, curve.P)
 	zinvsq.Mul(zinvsq, zinv)
-	yOut = new(big.Int).Mul(y, zinvsq)
+	yOut := new(big.Int).Mul(y, zinvsq)
 	yOut.Mod(yOut, curve.P)
 	return
 }
